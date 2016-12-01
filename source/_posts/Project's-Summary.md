@@ -12,7 +12,7 @@ tags:
 ---
 对项目所涉及的知识点进行总结。
 ### TXH
--
+***
 #### App设置
 1. 启动图片的设置
 2. PrefixHeader.pch
@@ -26,6 +26,12 @@ tags:
 			#import "UIButton+FillColor.h"
 			#import "NSString+lr_stringDate.h"
 			#endif
+3. [关于Xcode的Other Linker Flags](http://blog.csdn.net/meegomeego/article/details/19343423)
+> 那么，Other Linker Flags到底是用来干什么的呢？还有-ObjC和-all_load到底发挥了什么作用呢？
+
+4. 关于证书
+	* [iOS开发证书、秘钥](http://www.cnblogs.com/kenshincui/p/4168532.html#certificate)
+	* [Apple证书](http://blog.csdn.net/holydancer/article/details/9219333)
 
 #### 版本检测
 #### App架构
@@ -80,6 +86,7 @@ tags:
 2. 相机授权与调用
 3. 图片的选择
 
+#### UIPickerView与UIDatePicker
 #### 图形与表格显示
 #### UIWebView与UIActivityIndicatorView
 #### 微信分享
