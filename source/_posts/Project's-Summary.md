@@ -11,15 +11,28 @@ tags:
 
 ---
 对项目所涉及的知识点进行总结。
-## TXH
+### TXH
+-
+#### App设置
+1. 启动图片的设置
+2. PrefixHeader.pch
+	* 此文件可以设置共用的Macro
+	* [设置方法](http://www.jianshu.com/p/a19bb67d705e)
+	* 当工程有混编时，需添加如下代码 
+	
+			<!--若没有此限制 则c文件也会导入了oc头-->
+			#ifdef __OBJC__
+			#import "UIImage+color.h"
+			#import "UIButton+FillColor.h"
+			#import "NSString+lr_stringDate.h"
+			#endif
 
-#### 启动图片的设置
 #### 版本检测
 #### App架构
 1. Tabbar
 	* 系统Tabbar 与 自定义Tabbar
 2. Navigation
-	*  导航栏 
+	* 导航栏 
 3. 其他转场效果
 
 #### 本地与远程推送
@@ -70,4 +83,3 @@ tags:
 #### 图形与表格显示
 #### UIWebView与UIActivityIndicatorView
 #### 微信分享
-#### 
