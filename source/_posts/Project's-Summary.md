@@ -41,6 +41,7 @@ tags:
 	* 导航栏 
 3. 其他转场效果
 
+#### 图形与表格显示(重点难点)
 #### 本地与远程推送
 #### [网络服务（AFNetWorking）](https://github.com/AFNetworking/AFNetworking)
 1. 离线上传
@@ -120,6 +121,5 @@ tags:
 #### UIPickerView与UIDatePicker
 1. ListPickView
 
-#### 图形与表格显示
 #### UIWebView与UIActivityIndicatorView
 #### 微信分享
