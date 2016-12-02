@@ -42,7 +42,7 @@ tags:
 3. 其他转场效果
 
 #### 本地与远程推送
-#### 网络服务
+#### [网络服务（AFNetWorking）](https://github.com/AFNetworking/AFNetworking)
 1. 离线上传
 2. 在线上传
 3. 网络检测
@@ -56,17 +56,44 @@ tags:
 #### 动画
 1. 放大缩小
 2. 呼吸效果
+3. 毛玻璃效果
+
+		<!--创建显示图片-->
+		UIImageView * imageView = [[UIImageView alloc] init];
+		/**  毛玻璃特效类型
+		 *   UIBlurEffectStyleExtraLight,
+		 *   UIBlurEffectStyleLight,
+		 *   UIBlurEffectStyleDark
+		 */  
+		UIBlurEffect * blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+		<!--毛玻璃视图-->
+		UIVisualEffectView * effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+		<!--添加到要有毛玻璃特效的控件中-->
+		effectView.frame = imageView.bounds;
+		[imageView addSubview:effectView];
+		<!--设置模糊透明度-->
+		effectView.alpha = .5f;
 
 #### LoadingView与HUD 
-#### 数据持久化
-1. 数据库
-2. UserDefault
-3. 实体类
-4. 字典与数组模型化
+1. MBProgressHUD
+2. LoadingView
+
+#### [数据持久化](http://www.cocoachina.com/ios/20161115/18084.html)
+1. 文件 
+2. 数据库 (FMDB)
+3. UserDefault
+4. 字典与数组模型化 (MJExtension)
+
+#### UIScrollVIew
+1. ‘xib’与‘代码生成’可滚动的内容的区别
+2. 配合Tabbar的View滚动
+3. 图片查看器
+4. 键盘遮挡 (TPKeyboardAvoiding)
 
 #### UITableView与UICollectionView
-1. 下拉刷新与加载更多
+1. 下拉刷新与加载更多(MJRefresh)
 2. cell的动态高度
+3. 多层嵌套
 
 #### 应用内数据传递
 1. Block
@@ -74,7 +101,7 @@ tags:
 3. Delegate
 4. 暴露的对象变量
 
-#### 图片的加载与缓存
+#### 图片的加载与缓存(SDWebImage)
 1. 理解iOS存储机制
 
 #### 常见的日期处理(NSDate与NSCalendar)
@@ -84,9 +111,15 @@ tags:
 #### 相机与相册
 1. 二维码的生产与扫描
 2. 相机授权与调用
-3. 图片的选择
+3. 图片的选择(QBImagePickerController)
+
+#### IOS开发之手势
+1. 常见手势
+2. [手势共存](http://www.cnblogs.com/iphone520/archive/2011/10/27/2226548.html)
 
 #### UIPickerView与UIDatePicker
+1. ListPickView
+
 #### 图形与表格显示
 #### UIWebView与UIActivityIndicatorView
 #### 微信分享
