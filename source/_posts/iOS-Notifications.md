@@ -20,7 +20,7 @@ tags:
 相当于闹钟，无需联网
 ### [iOS10前的](http://www.cnblogs.com/kenshincui/p/4168532.html)
 这篇文章说得已经很详尽了。
-### [iOS10](http://www.cnblogs.com/kenshincui/p/4168532.html)
+### [iOS10](https://onevcat.com/2016/08/notification/)
 
 ## 远程推送
 
