@@ -106,12 +106,15 @@ tags:
 
 UserNotification相比之前的通知功能更加强大.
 
-![UserNotification框架](~/source/images/UN01.png)
+![UserNotification框架](/images/UN01.png)
 
 **基本流程：申请权限和注册 -> 创建和发起 -> 展示和处理**
 
 ### 权限申请
-#### iOS系统注保护用户隐私，许多操作都需获取用户权限，通知就是其一。示例如下：
+#### 在 Xcode 中启用推送通知
+![xcode开启通知](/images/UN02.jpg)
+#### 获取权限
+* iOS系统注保护用户隐私，许多操作都需获取用户权限，通知就是其一。示例如下：
 
 		//进行用户权限的申请
 		[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge|UNAuthorizationOptionSound|UNAuthorizationOptionAlert|UNAuthorizationOptionCarPlay completionHandler:^(BOOL granted, NSError * _Nullable error) {
@@ -122,7 +125,7 @@ UserNotification相比之前的通知功能更加强大.
 		      }
 		}];
 	
-#### UNAuthorizationOptions权限参数，其枚举定义如下：
+* UNAuthorizationOptions权限参数，其枚举定义如下：
 
 		typedef NS_OPTIONS(NSUInteger, UNAuthorizationOptions) {
 		    //允许更新app上的通知数字
@@ -181,11 +184,11 @@ UserNotification相比之前的通知功能更加强大.
 
 #### 触发器
  **触发方式有四种，Time Interval，Calender和Location，Push。其中Push是远程通知专用触发器。**
-##### UNTimeIntervalNotificationTrigger
+##### 计时触发器
 UNTimeIntervalNotificationTrigger是计时触发器，开发者可以设置其在添加通知请求后一定时间发送。在日常生活中当某项功能操作完成后，提醒用户下一步应做事项。
 
 	UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:second repeats:NO];
-##### UNCalendarNotificationTrigger
+##### 日历触发器
 UNCalendarNotificationTrigger是日历触发器，开发者可以设置其在某个时间点触发。
 
 	NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -193,7 +196,7 @@ UNCalendarNotificationTrigger是日历触发器，开发者可以设置其在某
 	dateComponents.timeZone = [NSTimeZone defaultTimeZone];//指定几时几秒
 	    
 	UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:dateComponents repeats:YES];
-##### UNLocationNotificationTrigger
+##### 地域触发器
 UNLocationNotificationTrigger是地域触发器，开发者可以设置当用户进出某一区域时触发。
 	
 	CLRegion *region = [[CLCircularRegion alloc] initWithCenter:coordinate radius:radius identifier:identifier];
@@ -210,7 +213,7 @@ UNLocationNotificationTrigger是地域触发器，开发者可以设置当用户
     content.attachments = @[attach];
     
 #### 通知模板的设置
-
+##### 系统默认模板UI
 	//创建action
 	UNTextInputNotificationAction * action = [UNTextInputNotificationAction actionWithIdentifier:@"action" title:@"回复" options:UNNotificationActionOptionAuthenticationRequired textInputButtonTitle:@"发送" textInputPlaceholder:@"请输入回复内容"];
 	//创建通知模板
@@ -219,6 +222,48 @@ UNLocationNotificationTrigger是地域触发器，开发者可以设置当用户
     content.categoryIdentifier = @"myNotificationCategoryText";
     [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithObjects:category, nil]];
 
+##### 自定义模板UI
+UserNotification框架非常好用，完全可以自定义通知UI。
+
+* New一个Target 选择Notification Content	
+![新建通知UI](/images/UN03.png)
+
+	创建后，工程新增了一个storyboard文件和一个NotificationViewController类。NotificationViewController遵守了UNNotificationContentExtension协议。可以实现协议方法来对接收通知和通知UI交互进行定制处理。
+	
+		//接收到通知时会被调用
+		/*
+		开发者可以从notification对象中拿到附件等内容进行UI刷新
+		*/
+		- (void)didReceiveNotification:(UNNotification *)notification;
+		//当用户点击了通知中的用户交互按钮时会被调用
+		/*
+		response对象中有通知内容相关信息
+		在回调block块completion中，开发者可以传入一个UNNotificationContentExtensionResponseOption参数来告诉系统如何处理这次用户活动
+		UNNotificationContentExtensionResponseOption枚举中可选值如下：
+		typedef NS_ENUM(NSUInteger, UNNotificationContentExtensionResponseOption) {
+		    //不关闭当前通知界面
+		    UNNotificationContentExtensionResponseOptionDoNotDismiss,
+		    //关闭当前通知界面
+		    UNNotificationContentExtensionResponseOptionDismiss,
+		    //关闭当前通知界面并将用户活动传递给宿主app处理
+		    UNNotificationContentExtensionResponseOptionDismissAndForwardAction,
+		} __IOS_AVAILABLE(10_0) __TVOS_UNAVAILABLE __WATCHOS_UNAVAILABLE __OSX_UNAVAILABLE;
+		*/
+		- (void)didReceiveNotificationResponse:(UNNotificationResponse *)response completionHandler:(void (^)(UNNotificationContentExtensionResponseOption option))completion;
+
+* 关联通知和展示界面extension
+
+	打开 extension 的 Info.plist，进行相关设置
+	
+	![设置extension](/images/UN04.png)
+	
+	* UNNotificationExtensionCategory：对应的是通知的categoryIdentifier。这个值既可以填 string ，也可以填 string 数组，如果想让多个通知 category 共用一个 extension 界面就可以填 string 数组。
+	* UNNotificationExtensionInitialContentSizeRatio：设置自定义通知界面的高度与宽度的比，宽度为固定宽度，在不同设备上有差别，开发者需要根据宽度计算出高度进行设置，系统根据这个比值来计算通知界面的高度。
+	* UNNotificationExtensionDefaultContentHidden：是有隐藏系统默认的通知界面。
+
+
+### 通知回调的处理
+ 
 
 ## 参考链接
 [iOS开发系列--通知与消息机制](http://www.cnblogs.com/kenshincui/p/4168532.html)

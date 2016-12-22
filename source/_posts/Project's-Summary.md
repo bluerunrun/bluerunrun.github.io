@@ -33,8 +33,11 @@ tags:
 	* [iOS开发证书、秘钥](http://www.cnblogs.com/kenshincui/p/4168532.html#certificate)
 	* [Apple证书](http://blog.csdn.net/holydancer/article/details/9219333)
 
-#### 版本检测
 #### App架构
+1. MVC
+2. MVVM
+
+#### ViewController的切换
 1. Tabbar
 	* 系统Tabbar 与 自定义Tabbar
 2. Navigation
@@ -42,7 +45,7 @@ tags:
 3. 其他转场效果
 
 #### 图形与表格显示(重点难点)
-#### 本地与远程推送
+#### [本地与远程推送](https://bluerunrun.github.io/2016/12/01/iOS-Notifications/)
 #### [网络服务（AFNetWorking）](https://github.com/AFNetworking/AFNetworking)
 1. 离线上传
 2. 在线上传
