@@ -14,6 +14,10 @@ tags:
   通知和推送是两种不同的概念。推送只是远程通知的触发方式，而通知是操作层面的一种UI展示方式，所以推送不等同于通知。iOS中通知机制包括两类：一类是本地通知；另一类是推送通知，也叫远程通知。两种通知在iOS中的表现一致，可以通过横幅或者弹出提醒两种形式告诉用户，并且点击通知可以会打开应用程序，但是实现原理却完全不同。
   iOS10中将通知功能整合成了一个框架UserNotification。
   
+  [本文对应的Demo](https://github.com/bluerunrun/NotificationDemo)
+  
+  **本文仅是对参考链接网文的个人整理，所有权利与荣耀归属于相关作者**
+
 ## iOS10前
 相当于闹钟，无需联网
 ### [本地通知](http://www.cnblogs.com/kenshincui/p/4168532.html)
@@ -304,8 +308,17 @@ UNUserNotificationCenterDelegate协议来实现的，实现协议中有两个方
 Appdelegate的application:didReceiveLocalNotification:方法用来捕获通知。
 
 ## 参考链接
+iOS10
+
+[iOS10通知框架UserNotification理解与应用](https://my.oschina.net/u/2340880/blog/747781)
+[iOS 10 通知更新详解](http://zltunes.com/ios-10-tong-zhi-geng-xin-xiang-jie/)
+[活久见的重构 - iOS 10 UserNotifications 框架解析 By onevcat大神](https://onevcat.com/2016/08/notification/)
+
+before iOS10
+
+[iOS推送的那些事](http://superdanny.link/2016/02/02/iOS-Apple-Push-Notification-Service/)
+[iOS中使用本地通知为你的APP添加提示用户功能](https://my.oschina.net/u/2340880/blog/405491)
+[分分钟搞定IOS远程消息推送](https://my.oschina.net/u/2340880/blog/413584)
 [iOS开发系列--通知与消息机制](http://www.cnblogs.com/kenshincui/p/4168532.html)
-
 [iOS推送之本地推送](http://www.jianshu.com/p/77ee3b98c132)
-
 [iOS推送之远程推送](http://www.jianshu.com/p/4b947569a548)
