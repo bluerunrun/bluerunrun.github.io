@@ -263,7 +263,45 @@ UserNotification框架非常好用，完全可以自定义通知UI。
 
 
 ### 通知回调的处理
- 
+#### 自定义模板内的回调处理
+实现UNNotificationContentExtension协议的didReceiveNotificationResponse:completionHandler:方法来响应用户操作。
+
+	- (void)didReceiveNotificationResponse:(UNNotificationResponse *)response completionHandler:(void (^)(UNNotificationContentExtensionResponseOption option))completion{
+	    if ([response.actionIdentifier  isEqual: @"likes"]) {
+	        NSString *identifiers = response.notification.request.identifier;
+	        [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:@[identifiers]];
+	        [[UNUserNotificationCenter currentNotificationCenter] removeDeliveredNotificationsWithIdentifiers:@[identifiers]];
+	        completion(UNNotificationContentExtensionResponseOptionDoNotDismiss);
+	    }else{
+	        completion(UNNotificationContentExtensionResponseOptionDismissAndForwardAction);
+	    }
+	}
+####  UserNotification框架对于通知的回调处理
+UNUserNotificationCenterDelegate协议来实现的，实现协议中有两个方法来响应用户操作。
+
+	/*
+	这个方法在应用在前台，并且将要弹出通知时被调用，后台状态下弹通知不会调用这个方法
+	这个方法中的block块completionHandler()可以传入一个UNNotificationPresentationOptions类型的枚举
+	有个这个参数，开发者可以设置在前台状态下，依然可以弹出通知消息，枚举如下：
+	typedef NS_OPTIONS(NSUInteger, UNNotificationPresentationOptions) {
+	    //只修改app图标的消息数
+	    UNNotificationPresentationOptionBadge   = (1 << 0),
+	    //只提示通知音效
+	    UNNotificationPresentationOptionSound   = (1 << 1),
+	    //只弹出通知框
+	    UNNotificationPresentationOptionAlert   = (1 << 2),
+	} __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0);
+	//什么都不做
+	static const UNNotificationPresentationOptions UNNotificationPresentationOptionNone 
+	*/
+	- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0);
+	/*
+	这个方法当接收到通知后，用户点击通知激活app时被调用，无论前台还是后台
+	*/
+	- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler __IOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0) __TVOS_PROHIBITED;
+
+#### 应用在活跃状态下的通知响应
+Appdelegate的application:didReceiveLocalNotification:方法用来捕获通知。
 
 ## 参考链接
 [iOS开发系列--通知与消息机制](http://www.cnblogs.com/kenshincui/p/4168532.html)
