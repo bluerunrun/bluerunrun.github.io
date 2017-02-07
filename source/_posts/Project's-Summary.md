@@ -1,5 +1,5 @@
 ---
-title: 项目知识点总结
+title: iOS项目总结
 date: 2016-11-30 12:09:56
 update: 2016-11-30 17:57:00
 categories: 
@@ -11,8 +11,38 @@ tags:
 
 ---
 对项目所涉及的知识点进行总结。
-### TXH
-***
+
+我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+
+## 医疗类
+- [糖福薈](https://itunes.apple.com/cn/app/tang-fu-hui/id1194434437?mt=8)
+- DirCare（未上线）
+糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。
+我在此项目中负责血糖血压等记录添加和展示UI的绘制、通用选项卡和提醒模块，梳理了Notification的相关知识，更深入理解UIKit。
+
+DirCare是一个医生预约App，我在此项目中负责HomePage（Filter选择）、SearchResult（医生列表和地图展示）、MedicalTeam、Settings的UI绘制，因此对于UITableView、UICollectionView、基本animation、MapKit有了更深入的了解。
+## 电商类
+- [港藥網](https://itunes.apple.com/cn/app/gang-yao-wang-xiang-gang-yao/id1042925913?mt=8)
+- [EATBAR 吃吧](https://itunes.apple.com/cn/app/eatber-chi-baapp-xiang-gang/id1021841744?mt=8)
+- Eateraction（在马来西亚上线）
+
+
+
+## 工具类
+- [易咪錶](https://itunes.apple.com/cn/app/yi-mi-biao-quan-ao-ren-ren/id1145701266?mt=8)
+
+<!--- [Macau EasyCheck](https://itunes.apple.com/cn/app/macau-easycheck/id911653250?mt=8)-->
+
+## 房產類
+- [易上樓](https://itunes.apple.com/cn/app/easyhome-macau-yi-shang-lou/id1107872819?mt=8)
+
+## 物流运输
+- eCall（个人外包项目 已交付上线）
+	- Swift3
+
+### 难点与重点
+
+### 知识点总结
 #### App设置
 1. 启动图片的设置
 2. PrefixHeader.pch
