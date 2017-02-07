@@ -16,11 +16,12 @@ tags:
 
 ## 医疗类
 - [糖福薈](https://itunes.apple.com/cn/app/tang-fu-hui/id1194434437?mt=8)
-- DirCare（未上线）
-糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。
-我在此项目中负责血糖血压等记录添加和展示UI的绘制、通用选项卡和提醒模块，梳理了Notification的相关知识，更深入理解UIKit。
+	
+	糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。	我在此项目中负责血糖血压等记录添加和展示UI的绘制、通用选项卡和提醒模块，梳理了Notification的相关知识，更深入理解UIKit。
 
-DirCare是一个医生预约App，我在此项目中负责HomePage（Filter选择）、SearchResult（医生列表和地图展示）、MedicalTeam、Settings的UI绘制，因此对于UITableView、UICollectionView、基本animation、MapKit有了更深入的了解。
+- DirCare（未上线）
+
+	DirCare是一个医生预约App，我在此项目中负责HomePage（Filter选择）、SearchResult（医生列表和地图展示）、MedicalTeam、Settings的UI绘制，因此对于UITableView、UICollectionView、基本animation、MapKit有了更深入的了解。
 ## 电商类
 - [港藥網](https://itunes.apple.com/cn/app/gang-yao-wang-xiang-gang-yao/id1042925913?mt=8)
 - [EATBAR 吃吧](https://itunes.apple.com/cn/app/eatber-chi-baapp-xiang-gang/id1021841744?mt=8)
