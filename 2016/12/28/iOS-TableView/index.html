@@ -1,0 +1,728 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,TableView,笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="TableViewTableView是一种仅可在竖直方向上滚动的列表视图，是ScrollView的子类。
+Table View Styles and Accessory ViewsTable View StylesTableVie 有两种style:  plain and grouped. 区别在于外观。
+Plain Table ViewsPlain Table View 是常用的样式。它的每一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-TableView">
+<meta property="og:url" content="http://yoursite.com/2016/12/28/iOS-TableView/index.html">
+<meta property="og:site_name" content="The Voyage of Blue">
+<meta property="og:description" content="TableViewTableView是一种仅可在竖直方向上滚动的列表视图，是ScrollView的子类。
+Table View Styles and Accessory ViewsTable View StylesTableVie 有两种style:  plain and grouped. 区别在于外观。
+Plain Table ViewsPlain Table View 是常用的样式。它的每一个">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_plain_style.jpg">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_indexed_list.jpg">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_grouped_style.jpg">
+<meta property="og:updated_time" content="2017-02-09T13:30:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-TableView">
+<meta name="twitter:description" content="TableViewTableView是一种仅可在竖直方向上滚动的列表视图，是ScrollView的子类。
+Table View Styles and Accessory ViewsTable View StylesTableVie 有两种style:  plain and grouped. 区别在于外观。
+Plain Table ViewsPlain Table View 是常用的样式。它的每一个">
+<meta name="twitter:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_plain_style.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/28/iOS-TableView/"/>
+
+
+
+
+
+  <title> iOS-TableView | The Voyage of Blue </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">The Voyage of Blue</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/28/iOS-TableView/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="BlueRunRun">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="The Voyage of Blue">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="The Voyage of Blue" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS-TableView
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-28T09:53:25+08:00">
+                2016-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/28/iOS-TableView/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/28/iOS-TableView/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="TableView"><a href="#TableView" class="headerlink" title="TableView"></a>TableView</h2><p>TableView是一种仅可在竖直方向上滚动的列表视图，是ScrollView的子类。</p>
+<h3 id="Table-View-Styles-and-Accessory-Views"><a href="#Table-View-Styles-and-Accessory-Views" class="headerlink" title="Table View Styles and Accessory Views"></a>Table View Styles and Accessory Views</h3><h4 id="Table-View-Styles"><a href="#Table-View-Styles" class="headerlink" title="Table View Styles"></a>Table View Styles</h4><p>TableVie 有两种style:  plain and grouped. 区别在于外观。</p>
+<h5 id="Plain-Table-Views"><a href="#Plain-Table-Views" class="headerlink" title="Plain Table Views"></a>Plain Table Views</h5><p>Plain Table View 是常用的样式。它的每一个section都可以有header和footer。当用户滑动到特定的sectio 时，其header会浮动在 table view 的头部。（<em>footer会浮动到底部。待验证</em>）<br><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_plain_style.jpg" alt="Plain Table View"></p>
+<p>还有一种常见的样式Plain Table View 是 indexed list。此索引列表提供了一种快捷定位到具体section的能力。<br><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_indexed_list.jpg" alt="indexed list"> </p>
+<h5 id="Grouped-Table-Views"><a href="#Grouped-Table-Views" class="headerlink" title="Grouped Table Views"></a>Grouped Table Views</h5><p>Grouped Table View 将关系紧密的rows分到一组。iOS系统设置页面就是此种样式的典型应用。<br><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tv_grouped_style.jpg" alt="Grouped Table Views"></p>
+<h4 id="Standard-Styles-for-Table-View-Cells"><a href="#Standard-Styles-for-Table-View-Cells" class="headerlink" title="Standard Styles for Table View Cells"></a>Standard Styles for Table View Cells</h4><p>系统提供了四种样式的Cell。当然你也可以自定义TableViewCell。</p>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_default.jpg" target="_blank" rel="external">UITableViewCellStyleDefault</a></li>
+<li><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_subtitle.jpg" target="_blank" rel="external">UITableViewCellStyleSubtitle</a> </li>
+<li><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_value1.jpg" target="_blank" rel="external">UITableViewCellStyleValue1</a> </li>
+<li><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_value2.jpg" target="_blank" rel="external">UITableViewCellStyleValue2</a></li>
+</ul>
+<h4 id="Accessory-Views"><a href="#Accessory-Views" class="headerlink" title="Accessory Views"></a>Accessory Views</h4><p>系统提供了三种样式的accessory view。当然你也可以自定义accessory view。</p>
+<p><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/TableViewStyles/TableViewCharacteristics.html#//apple_ref/doc/uid/TP40007451-CH3-SW2" target="_blank" rel="external">详情</a></p>
+<h3 id="TableViewCell"><a href="#TableViewCell" class="headerlink" title="TableViewCell"></a>TableViewCell</h3><h4 id="利用缓存池来重用cell优化性能"><a href="#利用缓存池来重用cell优化性能" class="headerlink" title="利用缓存池来重用cell优化性能"></a>利用缓存池来重用cell优化性能</h4><p>重用需注意cell状态的重置，避免视图与数据对应不上。换言之，可能前面的Cell A选中了，滑动时，新进入屏幕的cell重用了Cell A，并且cell仍然被选中。</p>
+<h4 id="Cell的高度"><a href="#Cell的高度" class="headerlink" title="Cell的高度"></a>Cell的高度</h4><h5 id="固定高度"><a href="#固定高度" class="headerlink" title="固定高度"></a>固定高度</h5><p>对于定高需求的表格，强烈建议使用这种方式保证不必要的高度计算和调用</p>
+<pre><code>self.tableView.rowHeight = 88;
+</code></pre><p>另一种方式就是实现 UITableViewDelegate 中的：</p>
+<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // return xxx
+}
+</code></pre><p>需要注意的是，实现了这个方法后，rowHeight 的设置将无效。所以，这个方法适用于具有多种 cell 高度的 UITableView。</p>
+<h5 id="动态高度"><a href="#动态高度" class="headerlink" title="动态高度"></a>动态高度</h5><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html#//apple_ref/doc/uid/TP40007451" target="_blank" rel="external">Table View Programming Guide for iOS</a><br><a href="http://www.cnblogs.com/kenshincui/p/3931948.html#introduction" target="_blank" rel="external">iOS开发系列–UITableView全面解析</a><br><a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">优化UITableViewCell高度计算的那些事</a><br><a href="http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights" target="_blank" rel="external">Using Auto Layout in UITableView for dynamic cell layouts &amp; variable row heights</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/TableView/" rel="tag"># TableView</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/23/iOS-TransitGodown/" rel="next" title="iOS临时仓库">
+                <i class="fa fa-chevron-left"></i> iOS临时仓库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/03/iOS-ViewControllerTransitions/" rel="prev" title="iOS-ViewControllerTransitions">
+                iOS-ViewControllerTransitions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/28/iOS-TableView/"
+           data-title="iOS-TableView" data-url="http://yoursite.com/2016/12/28/iOS-TableView/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="BlueRunRun" />
+          <p class="site-author-name" itemprop="name">BlueRunRun</p>
+          <p class="site-description motion-element" itemprop="description">Coding Rome</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluerunrun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/bluuue" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TableView"><span class="nav-number">1.</span> <span class="nav-text">TableView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-View-Styles-and-Accessory-Views"><span class="nav-number">1.1.</span> <span class="nav-text">Table View Styles and Accessory Views</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Table-View-Styles"><span class="nav-number">1.1.1.</span> <span class="nav-text">Table View Styles</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Plain-Table-Views"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Plain Table Views</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Grouped-Table-Views"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Grouped Table Views</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Standard-Styles-for-Table-View-Cells"><span class="nav-number">1.1.2.</span> <span class="nav-text">Standard Styles for Table View Cells</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Accessory-Views"><span class="nav-number">1.1.3.</span> <span class="nav-text">Accessory Views</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TableViewCell"><span class="nav-number">1.2.</span> <span class="nav-text">TableViewCell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用缓存池来重用cell优化性能"><span class="nav-number">1.2.1.</span> <span class="nav-text">利用缓存池来重用cell优化性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cell的高度"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cell的高度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#固定高度"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">固定高度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态高度"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">动态高度</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BlueRunRun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluerunrun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

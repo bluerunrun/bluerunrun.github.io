@@ -1,0 +1,871 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,总结,项目," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="对项目所涉及的知识点进行总结。
+我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+医疗类
+糖福薈
+  糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS项目总结">
+<meta property="og:url" content="http://yoursite.com/2016/11/30/Project's-Summary/index.html">
+<meta property="og:site_name" content="The Voyage of Blue">
+<meta property="og:description" content="对项目所涉及的知识点进行总结。
+我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+医疗类
+糖福薈
+  糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。">
+<meta property="og:updated_time" content="2017-02-09T13:30:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS项目总结">
+<meta name="twitter:description" content="对项目所涉及的知识点进行总结。
+我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+医疗类
+糖福薈
+  糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/30/Project's-Summary/"/>
+
+
+
+
+
+  <title> iOS项目总结 | The Voyage of Blue </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">The Voyage of Blue</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/30/Project's-Summary/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="BlueRunRun">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="The Voyage of Blue">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="The Voyage of Blue" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS项目总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-30T12:09:56+08:00">
+                2016-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/30/Project's-Summary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/Project's-Summary/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对项目所涉及的知识点进行总结。</p>
+<p>我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。</p>
+<h2 id="医疗类"><a href="#医疗类" class="headerlink" title="医疗类"></a>医疗类</h2><ul>
+<li><p><a href="https://itunes.apple.com/cn/app/tang-fu-hui/id1194434437?mt=8" target="_blank" rel="external">糖福薈</a></p>
+<p>  糖福薈是一个对血糖血压等健康数据统计和监控的App，分用户和亲友两端。亲友端可远程监控患者健康状态。    我在此项目中负责血糖血压等记录添加和展示UI的绘制、通用选项卡和提醒模块，梳理了Notification的相关知识，更深入理解UIKit。</p>
+</li>
+<li><p>DirCare（未上线）</p>
+<p>  DirCare是一个医生预约App，我在此项目中负责HomePage（Filter选择）、SearchResult（医生列表和地图展示）、MedicalTeam、Settings的UI绘制，因此对于UITableView、UICollectionView、基本animation、MapKit有了更深入的了解。</p>
+<h2 id="电商类"><a href="#电商类" class="headerlink" title="电商类"></a>电商类</h2></li>
+<li><a href="https://itunes.apple.com/cn/app/gang-yao-wang-xiang-gang-yao/id1042925913?mt=8" target="_blank" rel="external">港藥網</a></li>
+<li><a href="https://itunes.apple.com/cn/app/eatber-chi-baapp-xiang-gang/id1021841744?mt=8" target="_blank" rel="external">EATBAR 吃吧</a></li>
+<li>Eateraction（在马来西亚上线）</li>
+</ul>
+<h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><ul>
+<li><a href="https://itunes.apple.com/cn/app/yi-mi-biao-quan-ao-ren-ren/id1145701266?mt=8" target="_blank" rel="external">易咪錶</a></li>
+</ul>
+<!--- [Macau EasyCheck](https://itunes.apple.com/cn/app/macau-easycheck/id911653250?mt=8)-->
+<h2 id="房產類"><a href="#房產類" class="headerlink" title="房產類"></a>房產類</h2><ul>
+<li><a href="https://itunes.apple.com/cn/app/easyhome-macau-yi-shang-lou/id1107872819?mt=8" target="_blank" rel="external">易上樓</a></li>
+</ul>
+<h2 id="物流运输"><a href="#物流运输" class="headerlink" title="物流运输"></a>物流运输</h2><ul>
+<li>eCall（个人外包项目 已交付上线）<ul>
+<li>Swift3</li>
+</ul>
+</li>
+</ul>
+<h3 id="难点与重点"><a href="#难点与重点" class="headerlink" title="难点与重点"></a>难点与重点</h3><h3 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h3><h4 id="App设置"><a href="#App设置" class="headerlink" title="App设置"></a>App设置</h4><ol>
+<li>启动图片的设置</li>
+<li><p>PrefixHeader.pch</p>
+<ul>
+<li>此文件可以设置共用的Macro</li>
+<li><a href="http://www.jianshu.com/p/a19bb67d705e" target="_blank" rel="external">设置方法</a></li>
+<li><p>当工程有混编时，需添加如下代码 </p>
+<pre><code>&lt;!--若没有此限制 则c文件也会导入了oc头--&gt;
+#ifdef __OBJC__
+#import &quot;UIImage+color.h&quot;
+#import &quot;UIButton+FillColor.h&quot;
+#import &quot;NSString+lr_stringDate.h&quot;
+#endif
+</code></pre></li>
+</ul>
+</li>
+<li><p><a href="http://blog.csdn.net/meegomeego/article/details/19343423" target="_blank" rel="external">关于Xcode的Other Linker Flags</a></p>
+<blockquote>
+<p>那么，Other Linker Flags到底是用来干什么的呢？还有-ObjC和-all_load到底发挥了什么作用呢？</p>
+</blockquote>
+</li>
+<li><p>关于证书</p>
+<ul>
+<li><a href="http://www.cnblogs.com/kenshincui/p/4168532.html#certificate" target="_blank" rel="external">iOS开发证书、秘钥</a></li>
+<li><a href="http://blog.csdn.net/holydancer/article/details/9219333" target="_blank" rel="external">Apple证书</a></li>
+</ul>
+</li>
+</ol>
+<h4 id="App架构"><a href="#App架构" class="headerlink" title="App架构"></a>App架构</h4><ol>
+<li>MVC</li>
+<li>MVVM</li>
+</ol>
+<h4 id="ViewController的切换"><a href="#ViewController的切换" class="headerlink" title="ViewController的切换"></a>ViewController的切换</h4><ol>
+<li>Tabbar<ul>
+<li>系统Tabbar 与 自定义Tabbar</li>
+</ul>
+</li>
+<li>Navigation<ul>
+<li>导航栏 </li>
+</ul>
+</li>
+<li>其他转场效果</li>
+</ol>
+<h4 id="图形与表格显示-重点难点"><a href="#图形与表格显示-重点难点" class="headerlink" title="图形与表格显示(重点难点)"></a>图形与表格显示(重点难点)</h4><h4 id="本地与远程推送"><a href="#本地与远程推送" class="headerlink" title="本地与远程推送"></a><a href="https://bluerunrun.github.io/2016/12/01/iOS-Notifications/" target="_blank" rel="external">本地与远程推送</a></h4><h4 id="网络服务（AFNetWorking）"><a href="#网络服务（AFNetWorking）" class="headerlink" title="网络服务（AFNetWorking）"></a><a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">网络服务（AFNetWorking）</a></h4><ol>
+<li>离线上传</li>
+<li>在线上传</li>
+<li>网络检测</li>
+</ol>
+<h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><h4 id="UITextField与UITextView"><a href="#UITextField与UITextView" class="headerlink" title="UITextField与UITextView"></a>UITextField与UITextView</h4><ol>
+<li>常见文本的处理</li>
+<li>富文本</li>
+<li>textview自定义Placeholder</li>
+</ol>
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><ol>
+<li>放大缩小</li>
+<li>呼吸效果</li>
+<li><p>毛玻璃效果</p>
+<pre><code>&lt;!--创建显示图片--&gt;
+UIImageView * imageView = [[UIImageView alloc] init];
+/**  毛玻璃特效类型
+ *   UIBlurEffectStyleExtraLight,
+ *   UIBlurEffectStyleLight,
+ *   UIBlurEffectStyleDark
+ */  
+UIBlurEffect * blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+&lt;!--毛玻璃视图--&gt;
+UIVisualEffectView * effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+&lt;!--添加到要有毛玻璃特效的控件中--&gt;
+effectView.frame = imageView.bounds;
+[imageView addSubview:effectView];
+&lt;!--设置模糊透明度--&gt;
+effectView.alpha = .5f;
+</code></pre></li>
+</ol>
+<h4 id="LoadingView与HUD"><a href="#LoadingView与HUD" class="headerlink" title="LoadingView与HUD"></a>LoadingView与HUD</h4><ol>
+<li>MBProgressHUD</li>
+<li>LoadingView</li>
+</ol>
+<h4 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a><a href="http://www.cocoachina.com/ios/20161115/18084.html" target="_blank" rel="external">数据持久化</a></h4><ol>
+<li>文件 </li>
+<li>数据库 (FMDB)</li>
+<li>UserDefault</li>
+<li>字典与数组模型化 (MJExtension)</li>
+</ol>
+<h4 id="UIScrollVIew"><a href="#UIScrollVIew" class="headerlink" title="UIScrollVIew"></a>UIScrollVIew</h4><ol>
+<li>‘xib’与‘代码生成’可滚动的内容的区别</li>
+<li>配合Tabbar的View滚动</li>
+<li>图片查看器</li>
+<li>键盘遮挡 (TPKeyboardAvoiding)</li>
+</ol>
+<h4 id="UITableView与UICollectionView"><a href="#UITableView与UICollectionView" class="headerlink" title="UITableView与UICollectionView"></a>UITableView与UICollectionView</h4><ol>
+<li>下拉刷新与加载更多(MJRefresh)</li>
+<li>cell的动态高度</li>
+<li>多层嵌套</li>
+</ol>
+<h4 id="应用内数据传递"><a href="#应用内数据传递" class="headerlink" title="应用内数据传递"></a>应用内数据传递</h4><ol>
+<li>Block</li>
+<li>Notification</li>
+<li>Delegate</li>
+<li>暴露的对象变量</li>
+</ol>
+<h4 id="图片的加载与缓存-SDWebImage"><a href="#图片的加载与缓存-SDWebImage" class="headerlink" title="图片的加载与缓存(SDWebImage)"></a>图片的加载与缓存(SDWebImage)</h4><ol>
+<li>理解iOS存储机制</li>
+</ol>
+<h4 id="常见的日期处理-NSDate与NSCalendar"><a href="#常见的日期处理-NSDate与NSCalendar" class="headerlink" title="常见的日期处理(NSDate与NSCalendar)"></a>常见的日期处理(NSDate与NSCalendar)</h4><ol>
+<li>日期格式化</li>
+<li>日期比较</li>
+</ol>
+<h4 id="相机与相册"><a href="#相机与相册" class="headerlink" title="相机与相册"></a>相机与相册</h4><ol>
+<li>二维码的生产与扫描</li>
+<li>相机授权与调用</li>
+<li>图片的选择(QBImagePickerController)</li>
+</ol>
+<h4 id="IOS开发之手势"><a href="#IOS开发之手势" class="headerlink" title="IOS开发之手势"></a>IOS开发之手势</h4><ol>
+<li>常见手势</li>
+<li><a href="http://www.cnblogs.com/iphone520/archive/2011/10/27/2226548.html" target="_blank" rel="external">手势共存</a></li>
+</ol>
+<h4 id="UIPickerView与UIDatePicker"><a href="#UIPickerView与UIDatePicker" class="headerlink" title="UIPickerView与UIDatePicker"></a>UIPickerView与UIDatePicker</h4><ol>
+<li>ListPickView</li>
+</ol>
+<h4 id="UIWebView与UIActivityIndicatorView"><a href="#UIWebView与UIActivityIndicatorView" class="headerlink" title="UIWebView与UIActivityIndicatorView"></a>UIWebView与UIActivityIndicatorView</h4><h4 id="微信分享"><a href="#微信分享" class="headerlink" title="微信分享"></a>微信分享</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+            <a href="/tags/项目/" rel="tag"># 项目</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/01/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/01/iOS-Notifications/" rel="prev" title="iOS通知机制">
+                iOS通知机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/30/Project's-Summary/"
+           data-title="iOS项目总结" data-url="http://yoursite.com/2016/11/30/Project's-Summary/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="BlueRunRun" />
+          <p class="site-author-name" itemprop="name">BlueRunRun</p>
+          <p class="site-description motion-element" itemprop="description">Coding Rome</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluerunrun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/bluuue" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#医疗类"><span class="nav-number">1.</span> <span class="nav-text">医疗类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电商类"><span class="nav-number">2.</span> <span class="nav-text">电商类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具类"><span class="nav-number">3.</span> <span class="nav-text">工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#房產類"><span class="nav-number">4.</span> <span class="nav-text">房產類</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物流运输"><span class="nav-number">5.</span> <span class="nav-text">物流运输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难点与重点"><span class="nav-number">5.1.</span> <span class="nav-text">难点与重点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点总结"><span class="nav-number">5.2.</span> <span class="nav-text">知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#App设置"><span class="nav-number">5.2.1.</span> <span class="nav-text">App设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#App架构"><span class="nav-number">5.2.2.</span> <span class="nav-text">App架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewController的切换"><span class="nav-number">5.2.3.</span> <span class="nav-text">ViewController的切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图形与表格显示-重点难点"><span class="nav-number">5.2.4.</span> <span class="nav-text">图形与表格显示(重点难点)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地与远程推送"><span class="nav-number">5.2.5.</span> <span class="nav-text">本地与远程推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络服务（AFNetWorking）"><span class="nav-number">5.2.6.</span> <span class="nav-text">网络服务（AFNetWorking）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定时器"><span class="nav-number">5.2.7.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UITextField与UITextView"><span class="nav-number">5.2.8.</span> <span class="nav-text">UITextField与UITextView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画"><span class="nav-number">5.2.9.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LoadingView与HUD"><span class="nav-number">5.2.10.</span> <span class="nav-text">LoadingView与HUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据持久化"><span class="nav-number">5.2.11.</span> <span class="nav-text">数据持久化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIScrollVIew"><span class="nav-number">5.2.12.</span> <span class="nav-text">UIScrollVIew</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UITableView与UICollectionView"><span class="nav-number">5.2.13.</span> <span class="nav-text">UITableView与UICollectionView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用内数据传递"><span class="nav-number">5.2.14.</span> <span class="nav-text">应用内数据传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片的加载与缓存-SDWebImage"><span class="nav-number">5.2.15.</span> <span class="nav-text">图片的加载与缓存(SDWebImage)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的日期处理-NSDate与NSCalendar"><span class="nav-number">5.2.16.</span> <span class="nav-text">常见的日期处理(NSDate与NSCalendar)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相机与相册"><span class="nav-number">5.2.17.</span> <span class="nav-text">相机与相册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IOS开发之手势"><span class="nav-number">5.2.18.</span> <span class="nav-text">IOS开发之手势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIPickerView与UIDatePicker"><span class="nav-number">5.2.19.</span> <span class="nav-text">UIPickerView与UIDatePicker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIWebView与UIActivityIndicatorView"><span class="nav-number">5.2.20.</span> <span class="nav-text">UIWebView与UIActivityIndicatorView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微信分享"><span class="nav-number">5.2.21.</span> <span class="nav-text">微信分享</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BlueRunRun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluerunrun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
